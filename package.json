@@ -2,13 +2,26 @@
   "name": "fastify_demo_2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.ts",
   "type": "module",
   "scripts": {
+    "1": "tsx watch src/server.ts",
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon --exec ts-node src/server.ts"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/mongodb": "^8.0.0",
+    "fastify": "^4.23.2",
+    "module-alias": "^2.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.7.1",
+    "pino-pretty": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2"
+  }
 }
