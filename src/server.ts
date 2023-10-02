@@ -17,4 +17,11 @@ async function server() {
   });
 }
 
+["SIGINT", "SIGTERM"].forEach((signal) => {
+  process.on(signal, async () => {
+    await fastify.close();
+    process.exit(0);
+  });
+});
+
 server();

@@ -1,6 +1,7 @@
 import {
   getAllItemsCtr,
   getSignleItemCtr,
+  postItemCtr,
 } from "@/src/items/controllers/index";
 
 const Item = {
@@ -41,4 +42,18 @@ export const getSingleItemOpts = {
     },
   },
   handler: getSignleItemCtr,
+};
+export const postItemOpts = {
+  schema: {
+    response: {
+      201: {
+        type: "object",
+        properties: {
+          items: Item,
+          message: { type: "string" },
+        },
+      },
+    },
+  },
+  handler: postItemCtr,
 };
