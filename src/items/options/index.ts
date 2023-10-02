@@ -43,13 +43,17 @@ export const getSingleItemOpts = {
   },
   handler: getSignleItemCtr,
 };
+
 export const postItemOpts = {
   schema: {
     response: {
       201: {
         type: "object",
         properties: {
-          items: Item,
+          items: {
+            type: "array",
+            items: Item,
+          },
           message: { type: "string" },
         },
       },

@@ -1,6 +1,8 @@
 import { Item } from "@/src/items/types/types";
 import { items } from "@/items";
 import { FastifyReply, FastifyRequest } from "fastify";
+// @ts-ignore
+import { v4 as uuidv4 } from "uuid";
 
 export const getAllItemsCtr = async (
   req: FastifyRequest,
@@ -19,4 +21,14 @@ export const getSignleItemCtr = async (
 
 export const postItemCtr = async (req: FastifyRequest, reply: FastifyReply) => {
   //
+  const { name }: any = req.body;
+  const newItem = {
+    id: uuidv4(),
+    name: name,
+  };
+  console.log("newitem::: ", newItem);
+  const newListOfItems = [...items, newItem];
+  items.length = 0;
+  items.push(...newListOfItems);
+  reply.code(201).send({ items, message: "A new item has been added" });
 };
